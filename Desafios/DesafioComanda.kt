@@ -2,58 +2,64 @@ fun main(){
     val precoCoxinha = 5f
     val precoCerveja = 15f
 
-    println("Digite quantas coxinhas quer:")
-    val coxinhaInput = readLine()
+    println("Digite a quantidade de coxinhas pedidas:")
+    val qtdCoxinhaInput = readLine()
 
-    if(coxinhaInput.isNullOrBlank()){
-        println("Não pode ser null")
+    if (qtdCoxinhaInput.isNullOrBlank()) {
+        println("O campo não pode ser nulo ou vazio.")
         return
     }
 
-    val coxinha = coxinhaInput.toIntOrNull()
+    val qtdCoxinha = qtdCoxinhaInput.toIntOrNull()
 
-    if(coxinha == null){
-        println("Não pode ser null")
+    // Verifica se a conversão foi bem-sucedida
+    if (qtdCoxinha == null) {
+        println("Por favor, insira um número inteiro válido.")
         return
-    } else if (coxinha <= 0){
-        println("Não pode ser menor que zero")
-    }
-
-    println("Digite quantas cervejas quer:")
-    val cervejaInput = readLine()
-
-    if(cervejaInput.isNullOrBlank()){
-        println("Não pode ser null")
+    }else if(qtdCoxinha <= 0){
+        println("Por favor, insira um número maior que 0")
         return
     }
 
-    val cerveja = cervejaInput.toIntOrNull()
+    println("Digite a quantidade de cervejas pedidas:")
+    val qtdCervejaInput = readLine()
 
-        if(cerveja <= 0){
-        println("Não pode ser menor que zero")
+    if (qtdCervejaInput.isNullOrBlank()) {
+        println("O campo não pode ser nulo ou vazio.")
         return
     }
 
-    val comandaCoxinha = (precoCoxinha * coxinha)
-    val comandaCerveja = (precoCerveja * cerveja)
+    val qtdCerveja = qtdCervejaInput.toIntOrNull()
 
-    val somatoria = comandaCoxinha + comandaCerveja
+    // Verifica se a conversão foi bem-sucedida
+    if (qtdCerveja == null) {
+        println("Por favor, insira um número inteiro válido.")
+        return
+    }else if(qtdCerveja <= 0){
+        println("Por favor, insira um número maior que 0")
+        return
+    }
+    val precoCoxinhaSolo = (precoCoxinha*qtdCoxinha)
 
-    val taxa = (total * 0.1)
+    val precoCervejaSolo = (precoCerveja*qtdCerveja)
 
-    val contaFinal = (total * 1.10)
+    val valorConta = precoCoxinhaSolo + precoCervejaSolo
 
-    println("----------------------")
-    println("       CONSOLE        ")
-    println("----------------------")
-    println(".: Lanchonete Julia :.")
-    println("$coxinhaInput    R$ $precoCoxinha")
-    println("$cervejaInput    R$ $precoCerveja")
-    println("Somatória        R$ $somatoria")
-    println("Taxa 10%         R$ $taxa")
-    println("---------------------- ")
-    println("Conta final      R$ $total")
-    
-    
-    
+    val valorTaxa = String.format("%.2f",valorConta * 0.10)
+
+    val valorComTaxa = String.format("%.2f", valorConta * 1.10)
+
+
+    println("-------------------------")
+    println("\t'Console'\t")
+    println("-------------------------")
+    println(".|\tLanchonete da Julia\t|.")
+    println("-------------------------")
+    println("$qtdCoxinha coxinhas\tR$ $precoCoxinhaSolo   ")
+    println("$qtdCerveja cervejas\tR$ $precoCervejaSolo   ")
+    println("Somatória\tR$ $valorConta")
+    println("Taxa 10%\tR$ $valorTaxa")
+    println("-------------------------")
+    println("Conta Final\tR$ $valorComTaxa")
+   
 }
